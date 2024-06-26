@@ -1,0 +1,36 @@
+{
+  "name": "json-resume-builder",
+  "version": "1.0.0",
+  "description": "Resume Maker to make a professional resumes for the candidates that helps candidates in job search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./styles.css -o ./output.css --watch",
+    "start": "node server.js",
+    "validate": "resume validate --resume ./data/allUsersData.json",
+    "export": "resume export --resume ./data/allUsersData.json --theme macchiato  ./exports/main.pdf"
+  },
+  "keywords": [
+    "whiteboxlearningResumeMaker",
+    "UI",
+    "QA",
+    "ML",
+    "Resume",
+    "FreeResumeMaker"
+  ],
+  "author": "Whitebox-Learning",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "fs-extra": "^11.2.0",
+    "jsonresume-theme-macchiato": "^1.1.0",
+    "nodemon": "^3.1.3",
+    "puppeteer": "^22.12.0",
+    "resume-cli": "^3.1.2"
+  }
+}
