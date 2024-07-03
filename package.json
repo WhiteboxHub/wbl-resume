@@ -1,5 +1,5 @@
 {
-  "name": "json-resume-builder",
+  "name": "json-resume",
   "version": "1.0.0",
   "description": "Resume Maker to make a professional resumes for the candidates that helps candidates in job search",
   "main": "index.js",
@@ -8,7 +8,9 @@
     "build:css": "tailwindcss -i ./styles.css -o ./output.css --watch",
     "start": "node server.js",
     "validate": "resume validate --resume ./data/allUsersData.json",
-    "export": "resume export --resume ./data/allUsersData.json --theme macchiato  ./exports/main.pdf"
+    "export": "resume export --resume ./data/allUsersData.json --theme macchiato  ./exports/main.pdf",
+    "pdf": "resume export -- --format pdf \"./resume.pdf\"",
+    "html": "resume export --resume ./data/allUsersData.json --format html --theme macchiato \"./exports/main.html\""
   },
   "keywords": [
     "whiteboxlearningResumeMaker",
@@ -24,6 +26,7 @@
     "tailwindcss": "^3.4.4"
   },
   "dependencies": {
+    "child_process": "^1.0.2",
     "crypto": "^1.0.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",

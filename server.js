@@ -7,10 +7,9 @@ const session = require("express-session");
 const puppeteer = require("puppeteer");
 
 const app = express();
-const port = 3000;
+const port = 8081;
 const secretKey = crypto.randomBytes(64).toString("hex");
 const dataFilePath = path.join(__dirname, "data", "allUsersData.json");
-
 // Ensure the data directory exists
 const dataDir = path.join(__dirname, "data");
 if (!fs.existsSync(dataDir)) {
@@ -32,6 +31,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/exports', express.static(path.join(__dirname, 'exports')));
 
 // serve the landing page of application
 app.get("/", (req, res) => {

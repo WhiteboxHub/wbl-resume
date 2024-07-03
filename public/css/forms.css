@@ -78,7 +78,9 @@ body {
   border-color: #6c757d;
   box-shadow: none;
 }
-
+li{
+  list-style: none;
+}
 .btn-block {
   margin-top: 20px;
   background-color: #4caf50; /* Submit button background color */
@@ -90,6 +92,18 @@ body {
   background-color: #45a049;
 }
 
+/* .removes{
+  border-radius: 10px;
+  background-color: red;
+}
+.add-btn{
+  border-radius: 10px;
+  background-color: green;
+}
+.highlights{
+  border-radius: 10px;
+  background-color: orange;
+} */
 .pdf-preview {
   position: relative;
   width: 100%;
@@ -111,7 +125,7 @@ body {
   color: tomato;
 }
 
-#pdf {
+#generate-pdf {
   float: right;
 }
 

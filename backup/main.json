@@ -1,110 +1,143 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Programmer",
-    "image": "",
-    "email": "john@gmail.com",
-    "phone": "(912) 555-4321",
-    "url": "https://johndoe.com",
-    "summary": "A summary of John Doe…",
+    "name": "Saduvala Manisai",
+    "label": "Software Engineer",
+    "email": "manisaisaduvala21@gmail.com",
+    "phone": "6303481743",
+    "url": "https://github.com/ManisaiReddy/my_portfolio_manisai.git",
+    "summary": "Highly skilled and detail-oriented Software Engineer with 1.5 years of experience in developing, testing, and maintaining software applications. Proficient in a wide range of programming languages including Java, Python, C++, and JavaScript, with a strong background in algorithms, data structures, and software design patterns. Adept at collaborating with cross-functional teams to deliver high-quality software solutions on time and within budget. Demonstrated expertise in full software development lifecycle (SDLC) including requirements analysis, design, implementation, testing, and deployment. Passionate about learning new technologies and continuously improving technical skills.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "2-76/1, Chalvai",
+      "postalCode": "506343",
+      "city": "Hyderabad",
+      "countryCode": "In",
+      "region": "Telangana"
     },
-    "profiles": [{
-      "network": "Twitter",
-      "username": "john",
-      "url": "https://twitter.com/john"
-    }]
+    "profiles": [
+      {
+        "network": "linkedin",
+        "username": "manisai_21",
+        "url": "https://www.linkedin.com/in/manisai-saduvala-aa1559237/"
+      }
+    ]
   },
-  "work": [{
-    "name": "Company",
-    "position": "President",
-    "url": "https://company.com",
-    "startDate": "2013-01-01",
-    "endDate": "2014-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Started the company"
-    ]
-  }],
-  "volunteer": [{
-    "organization": "Organization",
-    "position": "Volunteer",
-    "url": "https://organization.com/",
-    "startDate": "2012-01-01",
-    "endDate": "2013-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Awarded 'Volunteer of the Month'"
-    ]
-  }],
-  "education": [{
-    "institution": "University",
-    "url": "https://institution.com/",
-    "area": "Software Development",
-    "studyType": "Bachelor",
-    "startDate": "2011-01-01",
-    "endDate": "2013-01-01",
-    "score": "4.0",
-    "courses": [
-      "DB1101 - Basic SQL"
-    ]
-  }],
-  "awards": [{
-    "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
-  }],
-  "certificates": [{
-    "name": "Certificate",
-    "date": "2021-11-07",
-    "issuer": "Company",
-    "url": "https://certificate.com"
-  }],
-  "publications": [{
-    "name": "Publication",
-    "publisher": "Company",
-    "releaseDate": "2014-10-01",
-    "url": "https://publication.com",
-    "summary": "Description…"
-  }],
-  "skills": [{
-    "name": "Web Development",
-    "level": "Master",
-    "keywords": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ]
-  }],
-  "languages": [{
-    "language": "English",
-    "fluency": "Native speaker"
-  }],
-  "interests": [{
-    "name": "Wildlife",
-    "keywords": [
-      "Ferrets",
-      "Unicorns"
-    ]
-  }],
-  "references": [{
-    "name": "Jane Doe",
-    "reference": "Reference…"
-  }],
-  "projects": [{
-    "name": "Project",
-    "startDate": "2019-01-01",
-    "endDate": "2021-01-01",
-    "description": "Description...",
-    "highlights": [
-      "Won award at AIHacks 2016"
-    ],
-    "url": "https://project.com/"
-  }]
+  "work": [
+    {
+      "name": "Innovapath IT Solutions Private Limited",
+      "position": "Software Engineer ",
+      "url": "http://www.innova-path.com",
+      "startDate": "2023-12-18",
+      "endDate": "2025-12-18",
+      "summary": "Experienced Software Engineer with a proven track record. Played a pivotal role in designing, developing, and deploying scalable software solutions that significantly improved operational efficiency. Demonstrated expertise in [specific technologies used at the company like, Java, Python, cloud computing, etc..., contributing to several high-impact projects. Recognized for exceptional problem-solving skills, ability to collaborate with cross-functional teams, and delivering projects on time and within budget. Passionate about leveraging technology to drive business success and continuously seeking opportunities to innovate and enhance software performance.",
+      "highlights": [
+        "Collaborated with cross-functional teams to successfully deliver [number] high-impact projects, enhancing overall product quality and user satisfaction."
+      ]
+    },
+    {
+      "name": "Websoft Solutions",
+      "position": "Programmer Traineee",
+      "url": "http://www.websofttechnologies.com",
+      "startDate": "2023-01-01",
+      "endDate": "2023-12-01",
+      "summary": "Experienced Software Engineer with a proven track record. Played a pivotal role in designing, developing, and deploying scalable software solutions that significantly improved operational efficiency. Demonstrated expertise in [specific technologies used at the company like, Java, Python, cloud computing, etc..., contributing to several high-impact projects. Recognized for exceptional problem-solving skills, ability to collaborate with cross-functional teams, and delivering projects on time and within budget. Passionate about leveraging technology to drive business success and continuously seeking opportunities to innovate and enhance software performance.",
+      "highlights": [
+        "Collaborated with cross-functional teams to successfully deliver [number] high-impact projects, enhancing overall product quality and user satisfaction."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Jawaharlal Nehru Technological University",
+      "url": "https://www.jntu.com",
+      "area": "Engineering",
+      "studyType": "Electronics and Communication Engineering",
+      "startDate": "2018-07-26",
+      "endDate": "2022-12-26",
+      "score": "53%",
+      "courses": [
+        "Java",
+        "Sql",
+        "Linux",
+        "AWS",
+        "Datadog"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Java ",
+      "date": "2023-11-01",
+      "issuer": "Jspiders"
+    },
+    {
+      "name": "WebTechnologies",
+      "date": "2023-11-01",
+      "issuer": "Jspiders"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Java",
+      "level": "Master",
+      "keywords": [
+        ""
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "level": "Master",
+      "keywords": [
+        ""
+      ]
+    },
+    {
+      "name": "AWS",
+      "level": "Master",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Telugu",
+      "fluency": "Native"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Writting code in Medium",
+      "keywords": [
+        "Passion for programming and excited to work in a team"
+      ]
+    },
+    {
+      "name": "Treeking",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "references": [],
+  "projects": [
+    {
+      "name": "Json-resume",
+      "description": "Created json-resume application that helps candidates to easily get thier resume by entering form",
+      "keywords": [
+        "Designed and developed the json-resume application, improving the resume creation process for users."
+      ],
+      "url": "https://whitebox-learning/json-resume.com",
+      "roles": [
+        "Implemented a dynamic form that auto-generates professional resumes in various formats, enhancing user experience and accessibility."
+      ],
+      "startDate": "2024-06-01",
+      "endDate": "2024-06-30",
+      "entity": "",
+      "type": ""
+    }
+  ]
 }

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
   const sectionLinks = document.querySelectorAll(".section-link");
   const sections = document.querySelectorAll(".section");
 
@@ -27,28 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Show the "Basics" section by default
   showSection("basics-section");
 });
-
-
-// function generatePdf() {
-//   fetch('/generate-pdf')
-//     .then(response => {
-//       if (response.ok) {
-//         return response.blob();
-//       } else {
-//         throw new Error('Failed to generate PDF');
-//       }
-//     })
-//     .then(blob => {
-//       const url = URL.createObjectURL(blob);
-//       const iframe = document.getElementById('pdf-preview');
-//       iframe.src = url;
-//     })
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-//   }
-
-
 //add work section
 
 function addWorkEntry() {
@@ -86,8 +63,8 @@ function addWorkEntry() {
         <li><input type="text" name="work_highlights[][0]" class="form-control"></li>
       </ul>
     </div>
-    <button type="button" onclick="addHighlight(this)">Add Highlight</button>
-    <button type="button" onclick="removeEntry(this)">Remove</button>
+    <button type="button" onclick="addHighlight(this)" class="highlights">Add Highlight</button>
+    <button type="button" onclick="removeEntry(this)" class="removes">Remove</button>
   `;
   container.appendChild(entryDiv);
 }
@@ -123,7 +100,7 @@ function addVolunteerEntry() {
       <label for="volunteer_summary">Summary:</label>
       <textarea name="volunteer_summary[]" class="form-control"></textarea><br>
   </div>
-  <button type="button" id="add-volunteer-button" onclick="addVolunteerEntry()">Add Volunteer Experience</button>
+  <button type="button" id="add-volunteer-button" onclick="addVolunteerEntry()" class="add-btn">Add Volunteer Experience</button>
 `;
 
   // Find the last volunteer-entry div and remove its add-volunteer-button
@@ -201,8 +178,8 @@ function addEducationEntry() {
         </div>
       </li>
     </ul>
-    <button type="button" onclick="addCourse(this)">Add Course</button>
-    <button type="button" onclick="removeEntry(this)">Remove</button>
+    <button type="button" onclick="addCourse(this)" class="add-btn">Add Course</button>
+    <button type="button" onclick="removeEntry(this)" class="removes">Remove</button>
   `;
   // Insert the new entry before the "Add Education" button
   container.insertBefore(
@@ -688,7 +665,6 @@ function submitJson() {
   const jsonPreviewDiv = document.getElementById("json-preview");
   jsonPreviewDiv.textContent = jsonString;
   console.log(jsonString);
-
   //send data to the server 
   fetch("/submit-form", {
     method: "POST",
@@ -712,5 +688,17 @@ function submitJson() {
     .catch((error) => {
       console.error("Error:", error);
     });
-   
+
+  // Hide the PDF iframe
+  document.getElementById("pdf-preview").style.display = "none";
+
+  // Show the JSON preview
+  document.getElementById("json-preview").style.display = "block";
+}
+function showPdf() {
+  document.getElementById("pdf-preview").style.display = "block";
+
+  // Clear the JSON preview and hide it
+  document.getElementById("json-preview").innerText = "";
+  document.getElementById("json-preview").style.display = "none";
 }
