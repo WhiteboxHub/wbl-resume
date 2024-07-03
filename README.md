@@ -20,20 +20,20 @@ To install and set up the project, follow these steps:
 
 1. Clone the repository:
 
-    \`\`\`bash
+    \`\`\`
     git clone https://github.com/WhiteboxHub/JSON-Resume.git
     cd json-resume-builder
     \`\`\`
 
 2. Install the dependencies:
 
-    \`\`\`bash
+    \`\`\`
     npm install
     \`\`\`
 
 3. Build the CSS:
 
-    \`\`\`bash
+    \`\`\`
     npm run build:css
     \`\`\`
 
@@ -43,7 +43,7 @@ To install and set up the project, follow these steps:
 
 To start the server, run:
 
-\`\`\`bash
+\`\`\`
 npm start
 \`\`\`
 
@@ -53,7 +53,7 @@ The server will be running on \`http://localhost:3000\`.
 
 To watch and build the CSS files using Tailwind CSS, run:
 
-\`\`\`bash
+\`\`\`
 npm run build:css
 \`\`\`
 
@@ -61,7 +61,7 @@ npm run build:css
 
 To validate the resume data, run:
 
-\`\`\`bash
+\`\`\`
 npm run validate
 \`\`\`
 
@@ -69,7 +69,7 @@ npm run validate
 
 To export the resume data to a PDF file using the \`macchiato\` theme, run:
 
-\`\`\`bash
+\`\`\`
 npm run export
 \`\`\`
 
