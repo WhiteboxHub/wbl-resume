@@ -1,7 +1,7 @@
 # json-resume
 
 ## Description
-**json-resume-builder** is a tool designed to help candidates create professional resumes. It provides a user-friendly interface for building resumes and offers functionalities such as data validation and export to PDF format using various themes.
+**json-resume** is a tool designed to help candidates create professional resumes. It provides a user-friendly interface for building resumes and offers functionalities such as data validation and export to PDF format using various themes.
 
 ## Features
 - **Create and Manage Resumes**: Users can create and manage their resume data.
@@ -22,7 +22,7 @@ To install and set up the project, follow these steps:
 
     \`\`\`
     git clone https://github.com/WhiteboxHub/JSON-Resume.git
-    cd json-resume-builder
+    cd json-resume
     \`\`\`
 
 2. Install the dependencies:
@@ -73,12 +73,22 @@ To export the resume data to a PDF file using the \`macchiato\` theme, run:
 npm run export
 \`\`\`
 
+### Get html from JSON
+
+To get the html from the generated json of the \`macchiato\` theme, run :
+
+\`\`\`
+npm run html
+\`\`\`
+
 ## Scripts
 
 - \`start\`: Starts the server.
 - \`build:css\`: Builds the CSS using Tailwind CSS.
 - \`validate\`: Validates the resume data.
 - \`export\`: Exports the resume data to a PDF file.
+- \`pdf\` : run npm run pdf to get the resume pdf.
+- \`html\` : Get the html for the json
 
 
 ## API Endpoints
@@ -99,3 +109,8 @@ Handles form submissions and saves user data in a JSON file.
 
 Generates a PDF resume from the stored user data.
 
+### License
+
+This project is liscensed under the MIT License.
+
+Made with ❤ by -WBL 
