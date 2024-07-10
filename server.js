@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const session = require("express-session");
 const puppeteer = require("puppeteer");
 
+
 const app = express();
 const port = 8081;
 const secretKey = crypto.randomBytes(64).toString("hex");
@@ -15,6 +16,7 @@ const dataDir = path.join(__dirname, "data");
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);
 }
+//console.log(secretKey);
 
 // Initialize the JSON file to be empty on server start
 fs.writeFileSync(dataFilePath, JSON.stringify({}), "utf8");
@@ -66,21 +68,7 @@ app.post("/submit-form", (req, res) => {
   );
 });
 
-// app.get('/generate-pdf', (req, res) => {
-//   exec('npm run export', (error, stdout, stderr) => {
-//     if (error) {
-//       console.error(`exec error: ${error}`);
-//       return res.status(500).send('Error generating PDF');
-//     }
 
-//     // Assuming your export script outputs the PDF data to stdout
-//     const pdfData = stdout;
-
-//     // Set content type and send PDF data directly
-//     res.setHeader('Content-Type', 'application/pdf');
-//     res.send(pdfData);
-//   });
-// });
 
 
 
