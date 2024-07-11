@@ -1,63 +1,142 @@
 {
     "basics": {
-      "name": "Saduvala Manisai",
-      "label": "SS",
-      "email": "manisaisaduvala21@gmail.com",
-      "phone": "06303481743",
-      "url": null,
-      "summary": "ssssssssssss",
+      "name": "John Doe",
+      "label": "Software Engineer",
+      "email": "johndoe@example.com",
+      "phone": "+1234567890",
+      "url": "https://johndoe.dev",
+      "summary": "Experienced software engineer with a passion for developing innovative programs. Adept at understanding client requirements and delivering robust solutions.",
       "location": {
-        "address": "Hyderabad G.P.O.",
-        "postalCode": "500001",
-        "city": "Hyderabad",
-        "countryCode": "India",
-        "region": null
+        "address": "123 Main Street",
+        "postalCode": "12345",
+        "city": "Anytown",
+        "countryCode": "USA",
+        "region": "California"
       },
       "profiles": [
         {
-          "network": "linkedin",
-          "username": "manisai_21",
-          "url": "https://www.linkedin.com"
+          "network": "LinkedIn",
+          "username": "johndoe",
+          "url": "https://www.linkedin.com/in/johndoe"
+        },
+        {
+          "network": "GitHub",
+          "username": "johndoe",
+          "url": "https://github.com/johndoe"
+        },
+        {
+          "network": "Twitter",
+          "username": "johndoe_dev",
+          "url": "https://twitter.com/johndoe_dev"
         }
       ]
     },
     "work": [
       {
-        "name": "Innovapath IT Solutions",
+        "name": "TechCorp Solutions",
+        "position": "Senior Software Engineer",
+        "startDate": "2020-01-01",
+        "endDate": "",
+        "summary": "Lead developer on multiple projects, mentoring junior developers and ensuring code quality.",
+        "highlights": ["Developed a microservices architecture", "Reduced system downtime by 30%"]
+      },
+      {
+        "name": "Innovatech",
         "position": "Software Engineer",
-        "startDate": "2024-07-01",
-        "endDate": "2024-08-06",
-        "summary": "Experienced web dev",
-        "highlights": []
+        "startDate": "2017-05-01",
+        "endDate": "2019-12-31",
+        "summary": "Worked on full-stack development, focusing on backend services and database management.",
+        "highlights": ["Implemented RESTful APIs", "Optimized database queries"]
+      },
+      {
+        "name": "WebWorks",
+        "position": "Junior Developer",
+        "startDate": "2015-06-01",
+        "endDate": "2017-04-30",
+        "summary": "Assisted in the development of client websites and web applications.",
+        "highlights": ["Collaborated on frontend design", "Maintained client websites"]
       }
     ],
     "education": [
       {
-        "institution": "BITS",
-        "area": "ECE",
-        "startDate": "2024-07-02",
-        "endDate": "2024-07-31",
-        "score": "3.6",
-        "courses": []
+        "institution": "MIT",
+        "area": "Computer Science",
+        "startDate": "2011-08-01",
+        "endDate": "2015-05-31",
+        "score": "3.9",
+        "courses": ["Algorithms", "Data Structures", "Operating Systems"]
+      },
+      {
+        "institution": "Stanford University",
+        "area": "Software Engineering",
+        "startDate": "2015-09-01",
+        "endDate": "2017-06-30",
+        "score": "4.0",
+        "courses": ["Machine Learning", "Artificial Intelligence", "Distributed Systems"]
+      },
+      {
+        "institution": "Harvard University",
+        "area": "Data Science",
+        "startDate": "2017-09-01",
+        "endDate": "2019-05-31",
+        "score": "3.8",
+        "courses": ["Data Mining", "Big Data", "Statistical Learning"]
       }
     ],
     "certificates": [
       {
-        "name": "Java",
-        "date": "2024-07-09"
+        "name": "Certified Java Developer",
+        "date": "2016-04-15"
+      },
+      {
+        "name": "AWS Certified Solutions Architect",
+        "date": "2018-11-20"
+      },
+      {
+        "name": "Certified Scrum Master",
+        "date": "2019-09-10"
       }
     ],
     "skills": [
       {
-        "name": "HTML",
-        "level": "Master",
-        "keywords": []
+        "name": "JavaScript",
+        "level": "Expert",
+        "keywords": ["ES6", "React", "Node.js"]
+      },
+      {
+        "name": "Python",
+        "level": "Advanced",
+        "keywords": ["Django", "Flask", "Pandas"]
+      },
+      {
+        "name": "Java",
+        "level": "Expert",
+        "keywords": ["Spring", "Hibernate", "Maven"]
+      },
+      {
+        "name": "SQL",
+        "level": "Advanced",
+        "keywords": ["MySQL", "PostgreSQL", "SQLite"]
+      },
+      {
+        "name": "Cloud Computing",
+        "level": "Intermediate",
+        "keywords": ["AWS", "Azure", "Google Cloud"]
       }
     ],
     "languages": [
       {
         "language": "English",
-        "fluency": "Advanced"
+        "fluency": "Native speaker"
+      },
+      {
+        "language": "Spanish",
+        "fluency": "Professional working proficiency"
+      },
+      {
+        "language": "French",
+        "fluency": "Limited working proficiency"
       }
     ]
   }
+  
