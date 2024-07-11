@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whiteboxlearning-forms</title>
-    <!-- Bootstrap CSS -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,33 +19,21 @@
       <a href="#" class="section-link" data-section="work-section"
         >Work Experience</a
       >
-      <a href="#" class="section-link" data-section="volunteer-section"
-        >Volunteer Experience</a
-      >
+
       <a href="#" class="section-link" data-section="education-section"
         >Education</a
       >
-      <a href="#" class="section-link" data-section="awards-section">Awards</a>
+
       <a href="#" class="section-link" data-section="certificates-section"
         >Certificates</a
       >
-      <a href="#" class="section-link" data-section="publications-section"
-        >Publications</a
-      >
+
       <a href="#" class="section-link" data-section="skills-section">Skills</a>
       <a href="#" class="section-link" data-section="languages-section"
         >Languages</a
       >
-      <a href="#" class="section-link" data-section="interests-section"
-        >Interests</a
-      >
-      <a href="#" class="section-link" data-section="references-section"
-        >References</a
-      >
-      <a href="#" class="section-link" data-section="projects-section"
-        >Projects</a
-      >
     </div>
+
     <div class="content">
       <form id="submit-form" class="form-container">
         <!-- Basics Section -->
@@ -62,7 +49,7 @@
             /><br />
           </div>
           <div class="form-group">
-            <label for="basics_label">Label:</label>
+            <label for="basics_label">Designation:</label>
             <div class="form-group">
               <input
                 type="text"
@@ -90,17 +77,6 @@
                 type="tel"
                 id="basics_phone"
                 name="basics_phone"
-                class="form-control"
-              /><br />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="basics_url">URL:</label>
-            <div class="form-group">
-              <input
-                type="url"
-                id="basics_url"
-                name="basics_url"
                 class="form-control"
               /><br />
             </div>
@@ -151,7 +127,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="basics_location_countryCode">Country Code:</label>
+            <label for="basics_location_countryCode">Country:</label>
             <div class="form-group">
               <input
                 type="text"
@@ -161,21 +137,11 @@
               /><br />
             </div>
           </div>
-          <div class="form-group">
-            <label for="basics_location_region">Region:</label>
-            <div class="form-group">
-              <input
-                type="text"
-                id="basics_location_region"
-                name="basics_location_region"
-                class="form-control"
-              /><br />
-            </div>
-          </div>
+
           <h3>Profiles</h3>
           <div id="profiles-container">
             <div class="profile">
-              <label for="basics_profiles_network">Network:</label>
+              <label for="basics_profiles_network">Socail Network:</label>
               <div class="form-group">
                 <input
                   type="text"
@@ -204,11 +170,10 @@
               </div>
             </div>
           </div>
-          <!-- <button type="button" onclick="addProfile()">Add Profile</button> -->
         </div>
 
         <!-- Work Experience Section -->
-        <div class="section" id="work-section">
+        <!-- <div class="section" id="work-section">
           <h2>Work Experience</h2>
           <div class="work-entry">
             <div class="form-group">
@@ -229,15 +194,7 @@
                 class="form-control"
               /><br />
             </div>
-            <div class="form-group">
-              <label for="work_url">URL:</label>
-              <input
-                type="url"
-                id="work_url"
-                name="work_url[]"
-                class="form-control"
-              /><br />
-            </div>
+
             <div class="form-group">
               <label for="work_startDate">Start Date:</label>
               <input
@@ -290,71 +247,43 @@
               </button>
             </div>
           </div>
-        </div>
-
-        <!-- Volunteer Experience Section -->
-        <div class="section" id="volunteer-section">
-          <h2>Volunteer Experience</h2>
-          <div class="volunteer-entry">
+        </div> -->
+        <div class="section" id="work-section">
+          <h2>Work Experience</h2>
+          <div class="work-entry">
             <div class="form-group">
-              <label for="volunteer_organization">Organization:</label>
-              <input
-                type="text"
-                id="volunteer_organization"
-                name="volunteer_organization[]"
-                class="form-control"
-              />
+              <label for="work_name">Company Name:</label>
+              <input type="text" id="work_name" name="work_name[]" class="form-control"><br>
             </div>
             <div class="form-group">
-              <label for="volunteer_position">Position:</label>
-              <input
-                type="text"
-                id="volunteer_position"
-                name="volunteer_position[]"
-                class="form-control"
-              />
+              <label for="work_position">Position:</label>
+              <input type="text" id="work_position" name="work_position[]" class="form-control"><br>
             </div>
             <div class="form-group">
-              <label for="volunteer_url">URL:</label>
-              <input
-                type="url"
-                id="volunteer_url"
-                name="volunteer_url[]"
-                class="form-control"
-              />
+              <label for="work_startDate">Start Date:</label>
+              <input type="date" id="work_startDate" name="work_startDate[]" class="form-control"><br>
             </div>
             <div class="form-group">
-              <label for="volunteer_startDate">Start Date:</label>
-              <input
-                type="date"
-                id="volunteer_startDate"
-                name="volunteer_startDate[]"
-                class="form-control"
-              />
+              <label for="work_endDate">End Date:</label>
+              <input type="date" id="work_endDate" name="work_endDate[]" class="form-control"><br>
             </div>
             <div class="form-group">
-              <label for="volunteer_endDate">End Date:</label>
-              <input
-                type="date"
-                id="volunteer_endDate"
-                name="volunteer_endDate[]"
-                class="form-control"
-              />
+              <label for="work_summary">Summary:</label>
+              <textarea id="work_summary" name="work_summary[]" class="form-control"></textarea><br>
             </div>
-            <!-- <div class="form-group"> -->
-            <label for="volunteer_summary">Summary:</label>
-            <textarea
-              id="volunteer_summary"
-              name="volunteer_summary[]"
-              class="form-control"
-            ></textarea>
-            <!-- </div> -->
+            <h3>Highlights</h3>
+            <div class="form-group">
+              <ul class="highlights-list" data-field="work_highlights">
+                <li><input type="text" name="work_highlights[0][]" class="form-control"></li>
+              </ul>
+            </div>
+            <button type="button" onclick="addHighlight(this, 0)" class="highlights">Add Highlight</button>
+            <div>
+              <button type="button" onclick="addWorkEntry()" class="add-btn">Add Work Experience</button>
+            </div>
           </div>
-          <!-- <button type="button" onclick="removeEntry(this)">Remove</button> -->
-          <button type="button" onclick="addVolunteerEntry()" class="add-btn">
-            Add Volunteer Experience
-          </button>
         </div>
+        
 
         <!-- Education Section -->
         <div class="section" id="education-section">
@@ -369,15 +298,7 @@
                 class="form-control"
               />
             </div>
-            <div class="form-group">
-              <label for="education_url">URL:</label>
-              <input
-                type="url"
-                id="education_url"
-                name="education_url[]"
-                class="form-control"
-              />
-            </div>
+
             <div class="form-group">
               <label for="education_area">Area of Study:</label>
               <input
@@ -387,15 +308,7 @@
                 class="form-control"
               />
             </div>
-            <div class="form-group">
-              <label for="education_studyType">Study Type:</label>
-              <input
-                type="text"
-                id="education_studyType"
-                name="education_studyType[]"
-                class="form-control"
-              />
-            </div>
+
             <div class="form-group">
               <label for="education_startDate">Start Date:</label>
               <input
@@ -423,23 +336,7 @@
                 class="form-control"
               />
             </div>
-            <h3>Courses</h3>
-            <ul class="courses-list" data-field="education_courses">
-              <li>
-                <div class="form-group">
-                  <label for="education_courses">Course:</label>
-                  <input
-                    type="text"
-                    id="education_courses"
-                    name="education_courses[][0]"
-                    class="form-control"
-                  />
-                </div>
-              </li>
-            </ul>
-            <button type="button" onclick="addCourse(this)" class="add-btn">
-              Add Course
-            </button>
+
             <button type="button" onclick="removeEntry(this)" class="removes">
               Remove
             </button>
@@ -447,49 +344,6 @@
           <button type="button" onclick="addEducationEntry()">
             Add Education
           </button>
-        </div>
-
-        <!-- Awards Section -->
-        <div class="section" id="awards-section">
-          <h2>Awards</h2>
-          <div class="award-entry">
-            <div class="form-group">
-              <label for="awards_title">Title:</label>
-              <input
-                type="text"
-                id="awards_title"
-                name="awards_title[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="awards_date">Date:</label>
-              <input
-                type="date"
-                id="awards_date"
-                name="awards_date[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="awards_awarder">Awarder:</label>
-              <input
-                type="text"
-                id="awards_awarder"
-                name="awards_awarder[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="awards_summary">Summary:</label>
-              <textarea
-                id="awards_summary"
-                name="awards_summary[]"
-                class="form-control"
-              ></textarea>
-            </div>
-          </div>
-          <button type="button" onclick="addAwardEntry()">Add Award</button>
         </div>
 
         <!-- Certificates Section -->
@@ -514,72 +368,9 @@
                 class="form-control"
               />
             </div>
-            <div class="form-group">
-              <label for="certificates_issuer">Issuer:</label>
-              <input
-                type="text"
-                id="certificates_issuer"
-                name="certificates_issuer[]"
-                class="form-control"
-              />
-            </div>
           </div>
           <button type="button" onclick="addCertificateEntry()">
             Add Certificate
-          </button>
-        </div>
-
-        <!-- Publications Section -->
-        <div class="section" id="publications-section">
-          <h2>Publications</h2>
-          <div class="publication-entry">
-            <div class="form-group">
-              <label for="publications_name">Name:</label>
-              <input
-                type="text"
-                id="publications_name"
-                name="publications_name[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="publications_publisher">Publisher:</label>
-              <input
-                type="text"
-                id="publications_publisher"
-                name="publications_publisher[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="publications_releaseDate">Release Date:</label>
-              <input
-                type="date"
-                id="publications_releaseDate"
-                name="publications_releaseDate[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="publications_url">URL:</label>
-              <input
-                type="url"
-                id="publications_url"
-                name="publications_url[]"
-                class="form-control"
-              />
-            </div>
-            <!-- <div class="form-group"> -->
-            <label for="publications_summary">Summary:</label>
-            <textarea
-              id="publications_summary"
-              name="publications_summary[]"
-              class="form-control"
-            ></textarea>
-            <!-- </div> -->
-          </div>
-          <button type="button" onclick="addPublicationEntry()">
-            Add Publication
           </button>
         </div>
 
@@ -605,22 +396,6 @@
                 class="form-control"
               />
             </div>
-            <!-- <div class="form-group"> -->
-            <h3>Keywords</h3>
-            <ul class="keywords-list" data-field="skills_keywords">
-              <label for="skills_keywords">Keyword:</label>
-              <li>
-                <!-- <div class="form-group"> -->
-                <input
-                  type="text"
-                  id="skills_keywords"
-                  name="skills_keywords[][0]"
-                  class="form-control"
-                />
-                <!-- </div> -->
-              </li>
-            </ul>
-            <!-- </div> -->
           </div>
           <button type="button" onclick="addSkillEntry()">Add Skill</button>
         </div>
@@ -652,138 +427,11 @@
             Add Language
           </button>
         </div>
-
-        <!-- Interests Section -->
-        <div class="section" id="interests-section">
-          <h2>Interests</h2>
-          <div class="interest-entry">
-            <div class="form-group">
-              <label for="interests_name">Name:</label>
-              <input
-                type="text"
-                id="interests_name"
-                name="interests_name[]"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <h3>Keywords</h3>
-              <ul class="keywords-list" data-field="interests_keywords">
-                <li>
-                  <div class="form-group">
-                    <label for="interests_keywords">Keyword:</label>
-                    <input
-                      type="text"
-                      id="interests_keywords"
-                      name="interests_keywords[][0]"
-                      class="form-control"
-                    />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <button type="button" onclick="addInterestEntry()">
-            Add Interest
-          </button>
-        </div>
-
-        <!-- References Section -->
-        <div class="section" id="references-section">
-          <h2>References</h2>
-          <div class="reference-entry">
-            <div class="form-group">
-              <label for="references_name">Name:</label>
-              <input
-                type="text"
-                id="references_name"
-                name="references_name[]"
-                class="form-control"
-              />
-            </div>
-          </div>
-          <button type="button" onclick="addReferenceEntry()">
-            Add Reference
-          </button>
-        </div>
-        <!-- Projects Section -->
-        <div class="section" id="projects-section">
-          <h2>Projects</h2>
-          <div class="project-entry">
-            <div class="form-group">
-              <label>Name:</label>
-              <input type="text" class="form-control" name="projects_name[]" />
-              <br />
-            </div>
-            <label>Description:</label>
-            <textarea
-              name="projects_description[]"
-              class="form-control"
-            ></textarea>
-            <br />
-            <h3>Keywords</h3>
-            <ul class="keywords-list" data-field="projects_keywords">
-              <li>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="projects_keywords[][0]"
-                />
-              </li>
-            </ul>
-            <div class="form-group">
-              <label>URL:</label>
-              <input
-                type="url"
-                class="form-control"
-                name="projects_url[]"
-              /><br />
-            </div>
-            <div class="form-group">
-              <label>Roles:</label>
-              <input type="text" class="form-control" name="projects_roles[]" />
-              <br />
-            </div>
-            <div class="form-group">
-              <label>Start Date:</label>
-              <input
-                type="date"
-                class="form-control"
-                name="projects_startDate[]"
-              />
-              <br />
-            </div>
-            <div class="form-group">
-              <label>End Date:</label>
-              <input
-                type="date"
-                class="form-control"
-                name="projects_endDate[]"
-              />
-              <br />
-            </div>
-            <div class="form-group">
-              <label>Entity:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="projects_entity[]"
-              />
-              <br />
-            </div>
-            <div class="form-group">
-              <label>Type: </label
-              ><input type="text" class="form-control" name="projects_type[]" />
-              <br />
-            </div>
-          </div>
-          <button type="button" onclick="addProjectEntry()">Add Project</button>
-        </div>
       </form>
     </div>
 
     <div class="pdf-preview">
-      <button type="button"  class="fixed" onclick="submitJson()">
+      <button type="button" class="fixed" onclick="submitJson()">
         Get JSON
       </button>
       <button type="button" class="fixed" id="generate-pdf" onclick="showPdf()">

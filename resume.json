@@ -1,0 +1,63 @@
+{
+    "basics": {
+      "name": "Saduvala Manisai",
+      "label": "SS",
+      "email": "manisaisaduvala21@gmail.com",
+      "phone": "06303481743",
+      "url": null,
+      "summary": "ssssssssssss",
+      "location": {
+        "address": "Hyderabad G.P.O.",
+        "postalCode": "500001",
+        "city": "Hyderabad",
+        "countryCode": "India",
+        "region": null
+      },
+      "profiles": [
+        {
+          "network": "linkedin",
+          "username": "manisai_21",
+          "url": "https://www.linkedin.com"
+        }
+      ]
+    },
+    "work": [
+      {
+        "name": "Innovapath IT Solutions",
+        "position": "Software Engineer",
+        "startDate": "2024-07-01",
+        "endDate": "2024-08-06",
+        "summary": "Experienced web dev",
+        "highlights": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "BITS",
+        "area": "ECE",
+        "startDate": "2024-07-02",
+        "endDate": "2024-07-31",
+        "score": "3.6",
+        "courses": []
+      }
+    ],
+    "certificates": [
+      {
+        "name": "Java",
+        "date": "2024-07-09"
+      }
+    ],
+    "skills": [
+      {
+        "name": "HTML",
+        "level": "Master",
+        "keywords": []
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Advanced"
+      }
+    ]
+  }
