@@ -192,9 +192,13 @@ function addSkillEntry() {
       <input type="text" name="skills_name[]" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="skills_level">Level:</label>
-      <input type="text" name="skills_level[]" class="form-control" />
-    </div>
+              <label for="skills_level">Level:</label>
+              <select id="skills_level" name="skills_level[]" class="form-control">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
     <button type="button" onclick="removeEntry(this)">Remove</button>
   `;
   // Insert the new entry before the "Add Skill" button
@@ -221,15 +225,22 @@ function addLanguageEntry() {
     </div>
     <div class="form-group">
       <label for="languages_fluency">Fluency:</label>
-      <input type="text" name="languages_fluency[]" class="form-control" />
+      <select id="languages_fluency" name="languages_fluency[]" class="form-control">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Native">Native</option>
+      </select>
     </div>
-    <button type="button" onclick="addLanguageEntry()">
-            Add Language
-          </button>
     <button type="button" onclick="removeEntry(this)">Remove</button>
   `;
-  container.appendChild(entryDiv);
+  // Insert the new entry before the "Add Language" button
+  container.insertBefore(
+    entryDiv,
+    container.querySelector('button[onclick="addLanguageEntry()"]')
+  );
 }
+
 
 // Function to remove an entry (interest or keyword)
 function removeEntry(button) {
@@ -253,14 +264,12 @@ function submitJson() {
       label: formData.get("basics_label"),
       email: formData.get("basics_email"),
       phone: formData.get("basics_phone"),
-      url: formData.get("basics_url"),
       summary: formData.get("basics_summary"),
       location: {
         address: formData.get("basics_location_address"),
         postalCode: formData.get("basics_location_postalCode"),
         city: formData.get("basics_location_city"),
         countryCode: formData.get("basics_location_countryCode"),
-        region: formData.get("basics_location_region"),
       },
       profiles: [],
     },
@@ -301,22 +310,7 @@ function submitJson() {
     });
   });
 
-  // Add volunteer experience
-  const volunteerEntries = document.querySelectorAll(".volunteer-entry");
-  volunteerEntries.forEach((entry) => {
-    jsonObject.volunteer.push({
-      organization: entry.querySelector(
-        'input[name="volunteer_organization[]"]'
-      ).value,
-      position: entry.querySelector('input[name="volunteer_position[]"]').value,
-      url: entry.querySelector('input[name="volunteer_url[]"]').value,
-      startDate: entry.querySelector('input[name="volunteer_startDate[]"]')
-        .value,
-      endDate: entry.querySelector('input[name="volunteer_endDate[]"]').value,
-      summary: entry.querySelector('textarea[name="volunteer_summary[]"]')
-        .value,
-    });
-  });
+
 
   // Add education
   const educationEntries = document.querySelectorAll(".education-entry");
@@ -330,23 +324,11 @@ function submitJson() {
       startDate: entry.querySelector('input[name="education_startDate[]"]')
         .value,
       endDate: entry.querySelector('input[name="education_endDate[]"]').value,
-      score: entry.querySelector('input[name="education_score[]"]').value,
-      courses: Array.from(
-        entry.querySelectorAll('input[name="education_courses[][0]"]')
-      ).map((input) => input.value),
+      score: entry.querySelector('input[name="education_score[]"]').value
     });
   });
 
-  // Add awards
-  const awardEntries = document.querySelectorAll(".award-entry");
-  awardEntries.forEach((entry) => {
-    jsonObject.awards.push({
-      title: entry.querySelector('input[name="awards_title[]"]').value,
-      date: entry.querySelector('input[name="awards_date[]"]').value,
-      awarder: entry.querySelector('input[name="awards_awarder[]"]').value,
-      summary: entry.querySelector('textarea[name="awards_summary[]"]').value,
-    });
-  });
+
 
   // Add certificates
   const certificateEntries = document.querySelectorAll(".certificate-entry");
@@ -357,15 +339,13 @@ function submitJson() {
     });
   });
 
+
   // Add skills
   const skillEntries = document.querySelectorAll(".skill-entry");
   skillEntries.forEach((entry) => {
     jsonObject.skills.push({
       name: entry.querySelector('input[name="skills_name[]"]').value,
-      level: entry.querySelector('input[name="skills_level[]"]').value,
-      keywords: Array.from(
-        entry.querySelectorAll('input[name="skills_keywords[][0]"]')
-      ).map((input) => input.value),
+      level: entry.querySelector('select[name="skills_level[]"]').value
     });
   });
 
@@ -374,32 +354,12 @@ function submitJson() {
   languageEntries.forEach((entry) => {
     jsonObject.languages.push({
       language: entry.querySelector('input[name="languages_language[]"]').value,
-      fluency: entry.querySelector('input[name="languages_fluency[]"]').value,
+      fluency: entry.querySelector('select[name="languages_fluency[]"]').value,
     });
   });
 
-  // Add projects
-  const projectEntries = document.querySelectorAll(".project-entry");
-  projectEntries.forEach((entry) => {
-    jsonObject.projects.push({
-      name: entry.querySelector('input[name="projects_name[]"]').value,
-      description: entry.querySelector(
-        'textarea[name="projects_description[]"]'
-      ).value,
-      keywords: Array.from(
-        entry.querySelectorAll('input[name="projects_keywords[][0]"]')
-      ).map((input) => input.value),
-      url: entry.querySelector('input[name="projects_url[]"]').value,
-      roles: Array.from(
-        entry.querySelectorAll('input[name="projects_roles[]"]')
-      ).map((input) => input.value),
-      startDate: entry.querySelector('input[name="projects_startDate[]"]')
-        .value,
-      endDate: entry.querySelector('input[name="projects_endDate[]"]').value,
-      entity: entry.querySelector('input[name="projects_entity[]"]').value,
-      type: entry.querySelector('input[name="projects_type[]"]').value,
-    });
-  });
+
+
 
   const jsonString = JSON.stringify(jsonObject, null, 2);
 
@@ -441,7 +401,6 @@ function submitJson() {
 
 function showPdf() {
   document.getElementById("pdf-preview").style.display = "block";
-
   // Clear the JSON preview and hide it
   document.getElementById("json-preview").innerText = "";
   document.getElementById("json-preview").style.display = "none";
