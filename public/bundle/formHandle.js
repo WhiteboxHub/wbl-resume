@@ -254,7 +254,6 @@ function addHighlight(button) {
   newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[][${index}]">`;
   highlightsList.appendChild(newHighlight);
 }
-
 function submitJson() {
   const form = document.getElementById("submit-form");
   const formData = new FormData(form);
@@ -310,25 +309,19 @@ function submitJson() {
     });
   });
 
-
-
   // Add education
   const educationEntries = document.querySelectorAll(".education-entry");
   educationEntries.forEach((entry) => {
     jsonObject.education.push({
       institution: entry.querySelector('input[name="education_institution[]"]')
         .value,
-
       area: entry.querySelector('input[name="education_area[]"]').value,
-
       startDate: entry.querySelector('input[name="education_startDate[]"]')
         .value,
       endDate: entry.querySelector('input[name="education_endDate[]"]').value,
       score: entry.querySelector('input[name="education_score[]"]').value
     });
   });
-
-
 
   // Add certificates
   const certificateEntries = document.querySelectorAll(".certificate-entry");
@@ -338,7 +331,6 @@ function submitJson() {
       date: entry.querySelector('input[name="certificates_date[]"]').value,
     });
   });
-
 
   // Add skills
   const skillEntries = document.querySelectorAll(".skill-entry");
@@ -358,17 +350,14 @@ function submitJson() {
     });
   });
 
-
-
-
   const jsonString = JSON.stringify(jsonObject, null, 2);
 
   // Display the JSON string in the PDF previewer
-
   const jsonPreviewDiv = document.getElementById("json-preview");
   jsonPreviewDiv.textContent = jsonString;
-  console.log(jsonString);
-  //send data to the server
+   console.log(jsonString);
+
+  // Send data to the server to generate HTML
   fetch("/submit-form", {
     method: "POST",
     headers: {
@@ -376,17 +365,11 @@ function submitJson() {
     },
     body: jsonString,
   })
-    .then((response) => {
-      // Check if the response is JSON
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        return response.json();
-      } else {
-        throw new Error("Server response was not JSON");
-      }
-    })
-    .then((data) => {
-      console.log("Success:", data);
+    .then((response) => response)
+    .then((html) => {
+      const previewDiv = document.getElementById("html-preview");
+      // previewDiv.innerHTML = html;
+      console.log("HTML Preview Updated");
     })
     .catch((error) => {
       console.error("Error:", error);
