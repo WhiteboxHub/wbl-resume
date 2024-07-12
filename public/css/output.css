@@ -960,6 +960,9 @@ video {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+
+
+
 @media (min-width: 768px) {
   .md\:mb-0 {
     margin-bottom: 0px;
