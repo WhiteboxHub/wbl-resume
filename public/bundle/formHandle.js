@@ -26,103 +26,78 @@ document.addEventListener("DOMContentLoaded", function () {
   // Show the "Basics" section by default
   showSection("basics-section");
 });
-//add work section
 
-// function addWorkEntry() {
-//   const container = document.getElementById("work-section");
-//   const entryDiv = document.createElement("div");
-//   entryDiv.classList.add("work-entry");
-//   entryDiv.innerHTML = `
-//     <div class="form-group">
-//       <label for="work_name">Name:</label>
-//       <input type="text" name="work_name[]" class="form-control"><br>
-//     </div>
-//     <div class="form-group">
-//       <label for="work_position">Position:</label>
-//       <input type="text" name="work_position[]" class="form-control"><br>
-//     </div>
-//     <div class="form-group">
-//       <label for="work_url">URL:</label>
-//       <input type="url" name="work_url[]" class="form-control"><br>
-//     </div>
-//     <div class="form-group">
-//       <label for="work_startDate">Start Date:</label>
-//       <input type="date" name="work_startDate[]" class="form-control"><br>
-//     </div>
-//     <div class="form-group">
-//       <label for="work_endDate">End Date:</label>
-//       <input type="date" name="work_endDate[]" class="form-control"><br>
-//     </div>
-//     <div class="form-group">
-//       <label for="work_summary">Summary:</label>
-//       <textarea name="work_summary[]" class="form-control"></textarea><br>
-//     </div>
-//     <h3>Highlights</h3>
-//     <div class="form-group">
-//       <ul class="highlights-list" data-field="work_highlights">
-//         <li><input type="text" name="work_highlights[][0]" class="form-control"></li>
-//       </ul>
-//     </div>
-//     <button type="button" onclick="addHighlight(this)" class="highlights">Add Highlight</button>
-//     <button type="button" onclick="removeEntry(this)" class="removes">Remove</button>
-//   `;
-//   container.appendChild(entryDiv);
-// }
-
-
-let workEntryCount = 1;
-
-function addWorkEntry() {
+function addWorkEntry(button) {
   const container = document.getElementById("work-section");
+
+  // Hide the "Add Work Experience" button from the previous form if it's not the initial form
+  if (button && !button.closest('.work-entry').classList.contains('initial-entry')) {
+    button.style.display = 'none';
+  }
+
   const entryDiv = document.createElement("div");
   entryDiv.classList.add("work-entry");
-
   entryDiv.innerHTML = `
     <div class="form-group">
       <label for="work_name">Company Name:</label>
-      <input type="text" id="work_name" name="work_name[]" class="form-control"><br>
+      <input type="text" name="work_name[]" class="form-control"><br>
     </div>
     <div class="form-group">
       <label for="work_position">Position:</label>
-      <input type="text" id="work_position" name="work_position[]" class="form-control"><br>
+      <input type="text" name="work_position[]" class="form-control"><br>
     </div>
     <div class="form-group">
       <label for="work_startDate">Start Date:</label>
-      <input type="date" id="work_startDate" name="work_startDate[]" class="form-control"><br>
+      <input type="date" name="work_startDate[]" class="form-control"><br>
     </div>
     <div class="form-group">
       <label for="work_endDate">End Date:</label>
-      <input type="date" id="work_endDate" name="work_endDate[]" class="form-control"><br>
+      <input type="date" name="work_endDate[]" class="form-control"><br>
     </div>
     <div class="form-group">
       <label for="work_summary">Summary:</label>
-      <textarea id="work_summary" name="work_summary[]" class="form-control"></textarea><br>
+      <textarea name="work_summary[]" class="form-control"></textarea><br>
     </div>
     <h3>Highlights</h3>
     <div class="form-group">
       <ul class="highlights-list" data-field="work_highlights">
-        <li><input type="text" name="work_highlights[${workEntryCount}][]" class="form-control"></li>
+        <li>
+          <input type="text" name="work_highlights[][0]" class="form-control">
+          <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>
+        </li>
       </ul>
     </div>
-    <button type="button" onclick="addHighlight(this, ${workEntryCount})" class="highlights">Add Highlight</button>
+    <button type="button" onclick="addHighlight(this)" class="highlights">Add Highlight</button>
     <button type="button" onclick="removeEntry(this)" class="removes">Remove</button>
+    <div>
+      <button type="button" onclick="addWorkEntry(this)" class="add-btn">Add Work Experience</button>
+    </div>
   `;
   container.appendChild(entryDiv);
-  workEntryCount++;
 }
-
-function addHighlight(button, workEntryIndex) {
-  const highlightList = button.previousElementSibling.querySelector('ul.highlights-list');
-  const newHighlight = document.createElement('li');
-  newHighlight.innerHTML = `<input type="text" name="work_highlights[${workEntryIndex}][]" class="form-control">`;
-  highlightList.appendChild(newHighlight);
-}
-
 
 function removeEntry(button) {
-  const entryDiv = button.parentNode;
+  const entryDiv = button.closest('.work-entry');
   entryDiv.remove();
 }
+
+function addHighlight(button) {
+  const ul = button.closest('.work-entry').querySelector('.highlights-list');
+  const newHighlight = document.createElement('li');
+  newHighlight.innerHTML = `
+    <input type="text" name="work_highlights[][${
+      ul.children.length
+    }]" class="form-control">
+    <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>
+  `;
+  ul.appendChild(newHighlight);
+}
+
+function removeHighlight(button) {
+  const li = button.closest('li');
+  li.remove();
+}
+
 
 // Function to remove an education entry
 function removeEntry(button) {
@@ -168,10 +143,10 @@ function addEducationEntry() {
   );
 }
 
-// Function to remove an award entry
-function removeEntry(button) {
-  button.parentElement.remove();
-}
+// // Function to remove an award entry
+// function removeEntry(button) {
+//   button.parentElement.remove();
+// }
 
 // Function to remove a certificate entry
 function removeEntry(button) {
@@ -279,7 +254,6 @@ function addHighlight(button) {
   newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[][${index}]">`;
   highlightsList.appendChild(newHighlight);
 }
-
 function submitJson() {
   const form = document.getElementById("submit-form");
   const formData = new FormData(form);
@@ -335,25 +309,19 @@ function submitJson() {
     });
   });
 
-
-
   // Add education
   const educationEntries = document.querySelectorAll(".education-entry");
   educationEntries.forEach((entry) => {
     jsonObject.education.push({
       institution: entry.querySelector('input[name="education_institution[]"]')
         .value,
-
       area: entry.querySelector('input[name="education_area[]"]').value,
-
       startDate: entry.querySelector('input[name="education_startDate[]"]')
         .value,
       endDate: entry.querySelector('input[name="education_endDate[]"]').value,
       score: entry.querySelector('input[name="education_score[]"]').value
     });
   });
-
-
 
   // Add certificates
   const certificateEntries = document.querySelectorAll(".certificate-entry");
@@ -363,7 +331,6 @@ function submitJson() {
       date: entry.querySelector('input[name="certificates_date[]"]').value,
     });
   });
-
 
   // Add skills
   const skillEntries = document.querySelectorAll(".skill-entry");
@@ -383,17 +350,14 @@ function submitJson() {
     });
   });
 
-
-
-
   const jsonString = JSON.stringify(jsonObject, null, 2);
 
   // Display the JSON string in the PDF previewer
-
   const jsonPreviewDiv = document.getElementById("json-preview");
   jsonPreviewDiv.textContent = jsonString;
-  console.log(jsonString);
-  //send data to the server
+   console.log(jsonString);
+
+  // Send data to the server to generate HTML
   fetch("/submit-form", {
     method: "POST",
     headers: {
@@ -401,17 +365,11 @@ function submitJson() {
     },
     body: jsonString,
   })
-    .then((response) => {
-      // Check if the response is JSON
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        return response.json();
-      } else {
-        throw new Error("Server response was not JSON");
-      }
-    })
-    .then((data) => {
-      console.log("Success:", data);
+    .then((response) => response)
+    .then((html) => {
+      const previewDiv = document.getElementById("html-preview");
+      // previewDiv.innerHTML = html;
+      console.log("HTML Preview Updated");
     })
     .catch((error) => {
       console.error("Error:", error);
