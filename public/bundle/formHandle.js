@@ -355,7 +355,7 @@ function submitJson() {
   // Display the JSON string in the PDF previewer
   const jsonPreviewDiv = document.getElementById("json-preview");
   jsonPreviewDiv.textContent = jsonString;
-   console.log(jsonString);
+  //  console.log(jsonString);
 
   // Send data to the server to generate HTML
   fetch("/submit-form", {
@@ -365,7 +365,7 @@ function submitJson() {
     },
     body: jsonString,
   })
-    .then((response) => response)
+    //.then((response) => response)
     .then((html) => {
       const previewDiv = document.getElementById("html-preview");
       // previewDiv.innerHTML = html;

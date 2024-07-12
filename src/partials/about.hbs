@@ -1,7 +1,7 @@
 {{#resume.basics}}
 <div class="container about-container">
     {{> title value="About"}}
-
+       {{log this}}
     {{#if location}}
         {{#location}}
         {{> info-tag text=(formatAddress address city region postalCode countryCode) icon="fa-map-marker"}}
