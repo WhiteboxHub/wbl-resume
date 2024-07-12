@@ -1,116 +1,82 @@
 # json-resume
 
-## Description
-**json-resume** is a tool designed to help candidates create professional resumes. It provides a user-friendly interface for building resumes and offers functionalities such as data validation and export to PDF format using various themes.
+**Version:** 1.0.0
+
+**Description:**  
+json-resume is a resume maker application that helps candidates create professional resumes to assist them in their job search. The application features an intuitive UI for inputting resume data, generating JSON data from the input, and providing a PDF preview of the resume.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Endpoints](#endpoints)
+- [License](#license)
 
 ## Features
-- **Create and Manage Resumes**: Users can create and manage their resume data.
-- **Tailwind CSS Integration**: Utilizes Tailwind CSS for styling.
-- **Data Validation**: Validates resume data to ensure completeness and correctness.
-- **Export to PDF**: Export resumes to PDF format using the `macchiato` theme.
 
-## Prerequisites
-
-- Node.js (v14 or later)
-- npm (Node Package Manager)
+- Generate professional resumes
+- Real-time preview of resume in PDF format
+- Export resume to PDF
+- Tailwind CSS for styling
+- Handlebars templating
 
 ## Installation
 
-To install and set up the project, follow these steps:
+1. **Clone the repository:**
 
-1. Clone the repository:
-
-    \`\`\`
-    git clone https://github.com/WhiteboxHub/JSON-Resume.git
-    cd json-resume
-    \`\`\`
-
-2. Install the dependencies:
-
-    \`\`\`
-    npm install
-    \`\`\`
-
-3. Build the CSS:
-
-    \`\`\`
-    npm run build:css
-    \`\`\`
-
-## Usage
-
-### Running the Application
-
-To start the server, run:
-
+\`\`\`bash
+git clone https://github.com/your-username/json-resume.git
+cd json-resume
 \`\`\`
+
+2. **Install dependencies:**
+
+\`\`\`bash
+npm install
+\`\`\`
+
+3. **Run the development server:**
+
+\`\`\`bash
 npm start
 \`\`\`
 
-The server will be running on \`http://localhost:3000\`.
+4. **Build CSS with Tailwind:**
 
-### Building CSS
-
-To watch and build the CSS files using Tailwind CSS, run:
-
-\`\`\`
+\`\`\`bash
 npm run build:css
 \`\`\`
 
-### Validating Resume Data
+## Usage
 
-To validate the resume data, run:
+1. Open your browser and navigate to `http://localhost:8081`.
+2. Fill out the resume forms.
+3. Submit the form to preview your resume in HTML.
+4. Generate the PDF of your resume.
 
-\`\`\`
-npm run validate
-\`\`\`
+## Endpoints
 
-### Exporting Resume to PDF
+- **GET `http://localhost:8081/`**  
+  Serve the landing page of the application.
 
-To export the resume data to a PDF file using the \`macchiato\` theme, run:
+- **GET `http://localhost:8081/forms`**  
+  Serve the forms page for inputting resume data.
 
-\`\`\`
-npm run export
-\`\`\`
+- **POST `http://localhost:8081/submit-form`**  
+  Submit the form data to render the resume in HTML.
 
-### Get html from JSON
+- **POST `http://localhost:8081/generate-pdf`**  
+  Generate the PDF resume from the HTML content.
 
-To get the html from the generated json of the \`macchiato\` theme, run :
+## License
 
-\`\`\`
-npm run html
-\`\`\`
+This project is licensed under the MIT License.
 
-## Scripts
+## Contribution
 
-- \`start\`: Starts the server.
-- \`build:css\`: Builds the CSS using Tailwind CSS.
-- \`validate\`: Validates the resume data.
-- \`export\`: Exports the resume data to a PDF file.
-- \`pdf\` : run npm run pdf to get the resume pdf.
-- \`html\` : Get the html for the json
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
+---
 
-## API Endpoints
-
-### `GET /`
-
-Serves the main index HTML file.
-
-### `GET /forms`
-
-Serves the form HTML file for resume input.
-
-### `POST /submit-form`
-
-Handles form submissions and saves user data in a JSON file.
-
-### `GET /generate-pdf`
-
-Generates a PDF resume from the stored user data.
-
-### License
-
-This project is liscensed under the MIT License.
-
-Made with ❤ by -WBL 
+Made with ❤️ by Whitebox-Learning
