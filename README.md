@@ -26,7 +26,7 @@ json-resume is a resume maker application that helps candidates create professio
 1. **Clone the repository:**
 
 \`\`\`bash
-git clone https://github.com/your-username/json-resume.git
+git clone https://github.com/ManisaiReddy/json-resume.git
 cd json-resume
 \`\`\`
 
