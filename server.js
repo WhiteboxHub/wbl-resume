@@ -549,32 +549,18 @@
 //   renderResume,
 // };
 const express = require("express");
-const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
 const path = require("path");
-const crypto = require("crypto");
-const session = require("express-session");
 const hbs = require("hbs");
 const pdf = require('html-pdf');
 const handlebars = require('handlebars');
 const handlebarsWax = require('handlebars-wax');
 const moment = require('moment');
 const fs = require("fs");
-const { log } = require("console");
+
 
 const app = express();
 const port = 8081;
-const secretKey = crypto.randomBytes(64).toString("hex");
-
-app.use(
-  session({
-    secret: secretKey,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  })
-);
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
