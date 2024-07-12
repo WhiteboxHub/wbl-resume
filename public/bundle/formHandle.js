@@ -31,8 +31,11 @@ function addWorkEntry(button) {
   const container = document.getElementById("work-section");
 
   // Hide the "Add Work Experience" button from the previous form if it's not the initial form
-  if (button && !button.closest('.work-entry').classList.contains('initial-entry')) {
-    button.style.display = 'none';
+  if (
+    button &&
+    !button.closest(".work-entry").classList.contains("initial-entry")
+  ) {
+    button.style.display = "none";
   }
 
   const entryDiv = document.createElement("div");
@@ -77,27 +80,24 @@ function addWorkEntry(button) {
 }
 
 function removeEntry(button) {
-  const entryDiv = button.closest('.work-entry');
+  const entryDiv = button.closest(".work-entry");
   entryDiv.remove();
 }
 
 function addHighlight(button) {
-  const ul = button.closest('.work-entry').querySelector('.highlights-list');
-  const newHighlight = document.createElement('li');
+  const ul = button.closest(".work-entry").querySelector(".highlights-list");
+  const newHighlight = document.createElement("li");
   newHighlight.innerHTML = `
-    <input type="text" name="work_highlights[][${
-      ul.children.length
-    }]" class="form-control">
+    <input type="text" name="work_highlights[][${ul.children.length}]" class="form-control">
     <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>
   `;
   ul.appendChild(newHighlight);
 }
 
 function removeHighlight(button) {
-  const li = button.closest('li');
+  const li = button.closest("li");
   li.remove();
 }
-
 
 // Function to remove an education entry
 function removeEntry(button) {
@@ -241,7 +241,6 @@ function addLanguageEntry() {
   );
 }
 
-
 // Function to remove an entry (interest or keyword)
 function removeEntry(button) {
   button.parentElement.remove();
@@ -254,6 +253,7 @@ function addHighlight(button) {
   newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[][${index}]">`;
   highlightsList.appendChild(newHighlight);
 }
+let htmlContent = "";
 function submitJson() {
   const form = document.getElementById("submit-form");
   const formData = new FormData(form);
@@ -319,7 +319,7 @@ function submitJson() {
       startDate: entry.querySelector('input[name="education_startDate[]"]')
         .value,
       endDate: entry.querySelector('input[name="education_endDate[]"]').value,
-      score: entry.querySelector('input[name="education_score[]"]').value
+      score: entry.querySelector('input[name="education_score[]"]').value,
     });
   });
 
@@ -337,7 +337,7 @@ function submitJson() {
   skillEntries.forEach((entry) => {
     jsonObject.skills.push({
       name: entry.querySelector('input[name="skills_name[]"]').value,
-      level: entry.querySelector('select[name="skills_level[]"]').value
+      level: entry.querySelector('select[name="skills_level[]"]').value,
     });
   });
 
@@ -351,14 +351,10 @@ function submitJson() {
   });
 
   const jsonString = JSON.stringify(jsonObject, null, 2);
-
   // Display the JSON string in the PDF previewer
   const jsonPreviewDiv = document.getElementById("json-preview");
   jsonPreviewDiv.textContent = jsonString;
   //  console.log(jsonString);
-
-   
-  // Send data to the server to generate HTML
   fetch("/submit-form", {
     method: "POST",
     headers: {
@@ -366,10 +362,11 @@ function submitJson() {
     },
     body: jsonString,
   })
-    //.then((response) => response)
-    .then((html) => {
+    .then((response) => response.json())
+    .then((data) => {
+      htmlContent = data.html; // Save the HTML content
       const previewDiv = document.getElementById("html-preview");
-      // previewDiv.innerHTML = html;
+      previewDiv.innerHTML = htmlContent;
       console.log("HTML Preview Updated");
     })
     .catch((error) => {
@@ -377,14 +374,31 @@ function submitJson() {
     });
 
   // Hide the PDF iframe
-  document.getElementById("pdf-preview").style.display = "none";
+  document.getElementById("pdf-frame").style.display = "none";
 
   // Show the JSON preview
   document.getElementById("json-preview").style.display = "block";
 }
 
 function showPdf() {
-  document.getElementById("pdf-preview").style.display = "block";
+  fetch("/generate-pdf", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ html: htmlContent }), // Send the saved HTML content
+  })
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const pdfFrame = document.getElementById("pdf-frame");
+      pdfFrame.src = url;
+      pdfFrame.style.display = "block";
+      console.log("PDF Preview Updated");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   // Clear the JSON preview and hide it
   document.getElementById("json-preview").innerText = "";
   document.getElementById("json-preview").style.display = "none";
