@@ -357,6 +357,7 @@ function submitJson() {
   jsonPreviewDiv.textContent = jsonString;
    console.log(jsonString);
 
+   
   // Send data to the server to generate HTML
   fetch("/submit-form", {
     method: "POST",
