@@ -1,14 +1,18 @@
 {{#if resume.work.length}}
 <div class="container work-container">
-    {{> title value="Experience"}}
+    
+    {{> title value="Experience"}} {{#each resume.work}}
 
-    {{#each resume.work}}
         <section class="item">
-            {{> section-header name=this.company }}
 
+
+            {{> section-header name=this.name }} 
+            
+            
             {{#if position}}
             <h4>{{position}}</h4>
             {{/if}}
+
 
             {{#if keywords.length}}
             <div class="flex-container">
@@ -17,6 +21,7 @@
                 {{/each}}
             </div>
             {{/if}}
+
 
             {{#if summary}}
             <p class="summary">{{summary}}</p>
