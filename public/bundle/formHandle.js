@@ -246,13 +246,23 @@ function removeEntry(button) {
   button.parentElement.remove();
 }
 
+//function to add highlights button
+
 function addHighlight(button) {
   const highlightsList = button.previousElementSibling;
   const newHighlight = document.createElement("li");
   const index = highlightsList.querySelectorAll("li").length;
-  newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[][${index}]">`;
+  newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[0][]">`;
   highlightsList.appendChild(newHighlight);
 }
+
+// Call this function when you need to collect the data, e.g., form submission
+document.querySelector("form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const highlightsData = collectHighlights();
+  // Perform further operations with highlightsData
+});
+
 let htmlContent = "";
 function submitJson() {
   const form = document.getElementById("submit-form");
@@ -303,8 +313,12 @@ function submitJson() {
       startDate: entry.querySelector('input[name="work_startDate[]"]').value,
       endDate: entry.querySelector('input[name="work_endDate[]"]').value,
       summary: entry.querySelector('textarea[name="work_summary[]"]').value,
+      //   highlights: Array.from(
+      //     entry.querySelectorAll('input[name="work_highlights[][0]"]')
+      //   ).map((input) => input.value),
+      // });
       highlights: Array.from(
-        entry.querySelectorAll('input[name="work_highlights[][0]"]')
+        document.querySelectorAll('input[name^="work_highlights"]')
       ).map((input) => input.value),
     });
   });
@@ -365,8 +379,8 @@ function submitJson() {
     .then((response) => response.json())
     .then((data) => {
       htmlContent = data.html; // Save the HTML content
-      const previewDiv = document.getElementById("html-preview");
-      previewDiv.innerHTML = htmlContent;
+      // const previewDiv = document.getElementById("html-preview");
+      // previewDiv.innerHTML = htmlContent;
       console.log("HTML Preview Updated");
     })
     .catch((error) => {
@@ -380,60 +394,55 @@ function submitJson() {
   document.getElementById("json-preview").style.display = "block";
 }
 
-
-
-
-
-
 function showPdf() {
- // Show the loading bar
- const loadingBar = document.getElementById("loading-bar");
- const bar = document.querySelector("#loading-bar .bar");
- loadingBar.style.display = "block";
+  // Show the loading bar
+  const loadingBar = document.getElementById("loading-bar");
+  const bar = document.querySelector("#loading-bar .bar");
+  loadingBar.style.display = "block";
 
- // Start the loading bar animation
- bar.style.width = "0";
- let startTime = Date.now();
+  // Start the loading bar animation
+  bar.style.width = "0";
+  let startTime = Date.now();
 
- fetch("/generate-pdf", {
-   method: "POST",
-   headers: {
-     "Content-Type": "application/json",
-   },
-   body: JSON.stringify({ html: htmlContent }), // Send the saved HTML content
- })
-   .then((response) => response.blob())
-   .then((blob) => {
-     const url = URL.createObjectURL(blob);
-     const pdfFrame = document.getElementById("pdf-frame");
-     pdfFrame.src = url;
-     pdfFrame.style.display = "block";
-     console.log("PDF Preview Updated");
+  fetch("/generate-pdf", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ html: htmlContent }), // Send the saved HTML content
+  })
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const pdfFrame = document.getElementById("pdf-frame");
+      pdfFrame.src = url;
+      pdfFrame.style.display = "block";
+      console.log("PDF Preview Updated");
 
-     // Calculate the response time
-     let endTime = Date.now();
-     let responseTime = endTime - startTime;
+      // Calculate the response time
+      let endTime = Date.now();
+      let responseTime = endTime - startTime;
 
-     // Set the loading bar to 100% based on the response time
-     bar.style.transition = `width ${responseTime / 1000}s ease`;
-     bar.style.width = "100%";
+      // Set the loading bar to 100% based on the response time
+      bar.style.transition = `width ${responseTime / 1000}s ease`;
+      bar.style.width = "100%";
 
-     // Hide the loading bar after the transition is complete
-     setTimeout(() => {
-       loadingBar.style.display = "none";
-     }, responseTime);
-   })
-   .catch((error) => {
-     console.error("Error:", error);
+      // Hide the loading bar after the transition is complete
+      setTimeout(() => {
+        loadingBar.style.display = "none";
+      }, responseTime);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
 
-     // Hide the loading bar in case of an error
-     loadingBar.style.display = "none";
-   })
+      // Hide the loading bar in case of an error
+      loadingBar.style.display = "none";
+    })
     .finally(() => {
       // Hide the loading bar
       loadingBar.style.display = "none";
     });
-    
+
   // Clear the JSON preview and hide it
   document.getElementById("json-preview").innerText = "";
   document.getElementById("json-preview").style.display = "none";
