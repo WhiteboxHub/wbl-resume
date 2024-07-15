@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src')); // Set directory for template files
 
+
 // Register Handlebars helpers
 handlebars.registerHelper({
   removeProtocol: url => url.replace(/.*?:\/\//g, ''),
@@ -28,8 +29,12 @@ handlebars.registerHelper({
   eq: (a, b) => a === b,
 });
 
+
+
 // Initialize HandlebarsWax with Handlebars
 const Handlebars = handlebarsWax(handlebars);
+
+
 
 // Register partials
 Handlebars.partials(path.join(__dirname, 'src', 'partials', '', '*.hbs'));

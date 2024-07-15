@@ -119,10 +119,6 @@ function addEducationEntry() {
       <input type="text" name="education_area[]" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="education_studyType">Study Type:</label>
-      <input type="text" name="education_studyType[]" class="form-control" />
-    </div>
-    <div class="form-group">
       <label for="education_startDate">Start Date:</label>
       <input type="date" name="education_startDate[]" class="form-control" />
     </div>
@@ -253,7 +249,7 @@ function addHighlight(button) {
   newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[][${index}]">`;
   highlightsList.appendChild(newHighlight);
 }
-let htmlContent = "";
+var htmlContent = "";
 function submitJson() {
   const form = document.getElementById("submit-form");
   const formData = new FormData(form);
@@ -365,8 +361,6 @@ function submitJson() {
     .then((response) => response.json())
     .then((data) => {
       htmlContent = data.html; // Save the HTML content
-      const previewDiv = document.getElementById("html-preview");
-      previewDiv.innerHTML = htmlContent;
       console.log("HTML Preview Updated");
     })
     .catch((error) => {
