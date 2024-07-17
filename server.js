@@ -10,7 +10,7 @@ const fs = require("fs");
 const { log } = require("console");
 
 const app = express();
-const port = 8081;
+const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -62,10 +62,11 @@ app.get("/forms", (req, res) => {
 });
 
 // Endpoint to submit form data and render HTML
-// 
+
 app.post("/submit-form", (req, res) => {
   const formData = req.body;
   const html = renderResume(formData);
+  // get html as response
   console.log(html);
   res.json({ html });  // Return the HTML content as JSON
 });

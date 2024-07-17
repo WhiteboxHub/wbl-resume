@@ -42,39 +42,74 @@ function addWorkEntry(button) {
   entryDiv.classList.add("work-entry");
   entryDiv.innerHTML = `
     <div class="form-group">
-      <label for="work_name">Company Name:</label>
-      <input type="text" name="work_name[]" class="form-control"><br>
-    </div>
-    <div class="form-group">
-      <label for="work_position">Position:</label>
-      <input type="text" name="work_position[]" class="form-control"><br>
-    </div>
-    <div class="form-group">
-      <label for="work_startDate">Start Date:</label>
-      <input type="date" name="work_startDate[]" class="form-control"><br>
-    </div>
-    <div class="form-group">
-      <label for="work_endDate">End Date:</label>
-      <input type="date" name="work_endDate[]" class="form-control"><br>
-    </div>
-    <div class="form-group">
-      <label for="work_summary">Summary:</label>
-      <textarea name="work_summary[]" class="form-control"></textarea><br>
-    </div>
-    <h3>Highlights</h3>
-    <div class="form-group">
-      <ul class="highlights-list" data-field="work_highlights">
-        <li>
-          <input type="text" name="work_highlights[][0]" class="form-control">
-          <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>
-        </li>
-      </ul>
-    </div>
-    <button type="button" onclick="addHighlight(this)" class="highlights">Add Highlight</button>
-    <button type="button" onclick="removeEntry(this)" class="removes">Remove</button>
-    <div>
-      <button type="button" onclick="addWorkEntry(this)" class="add-btn">Add Work Experience</button>
-    </div>
+              <label for="work_name">Company:</label>
+              <input
+                type="text"
+                id="work_name"
+                name="work_name[]"
+                class="form-control"
+              /><br />
+            </div>
+            <div class="form-group">
+              <label for="work_position">Position:</label>
+              <input
+                type="text"
+                id="work_position"
+                name="work_position[]"
+                class="form-control"
+              /><br />
+            </div>
+            <div class="form-group">
+              <label for="work_startDate">Start Date:</label>
+              <input
+                type="date"
+                id="work_startDate"
+                name="work_startDate[]"
+                class="form-control"
+              /><br />
+            </div>
+            <div class="form-group">
+              <label for="work_endDate">End Date:</label>
+              <input
+                type="date"
+                id="work_endDate"
+                name="work_endDate[]"
+                class="form-control"
+              /><br />
+            </div>
+            <div class="form-group">
+              <label for="work_summary">Summary:</label>
+              <textarea
+                id="work_summary"
+                name="work_summary[]"
+                class="form-control"
+              ></textarea
+              ><br />
+            </div>
+
+            <h3>Highlights</h3>
+
+            <div class="form-group">
+              <ul class="highlights-list" data-field="work_highlights">
+                <li>
+                  <input
+                    type="text"
+                    name="work_highlights[0][]"
+                    class="form-control"
+                  />
+                </li>
+              </ul>
+              <button type="button" 
+              class="highlights"
+              onclick="addHighlight(this)">
+                Add Highlight
+              </button>
+            </div>
+             <div>
+              <button type="button" onclick="addWorkEntry()" class="add-btn">
+                Add Work Experience
+              </button>
+            </div>
   `;
   container.appendChild(entryDiv);
 }
@@ -84,13 +119,11 @@ function removeEntry(button) {
   entryDiv.remove();
 }
 
+//
 function addHighlight(button) {
   const ul = button.closest(".work-entry").querySelector(".highlights-list");
   const newHighlight = document.createElement("li");
-  newHighlight.innerHTML = `
-    <input type="text" name="work_highlights[][${ul.children.length}]" class="form-control">
-    <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>
-  `;
+  newHighlight.innerHTML = ` <input type="text" name="work_highlights[][${ul.children.length}]" class="form-control">`` <button type="button" onclick="removeHighlight(this)" class="remove-highlight">Remove</button>`;
   ul.appendChild(newHighlight);
 }
 
@@ -244,12 +277,41 @@ function removeEntry(button) {
 
 //function to add highlights button
 
+//
+//
+
 function addHighlight(button) {
   const highlightsList = button.previousElementSibling;
+
+  // Remove the delete button from the last highlight if it exists
+  const lastHighlight = highlightsList.querySelector("li:last-child button");
+  if (lastHighlight) {
+    lastHighlight.remove();
+  }
+
   const newHighlight = document.createElement("li");
   const index = highlightsList.querySelectorAll("li").length;
-  newHighlight.innerHTML = `<input type="text" name="${highlightsList.dataset.field}[0][]">`;
+  newHighlight.innerHTML = `
+    <input type="text" name="${highlightsList.dataset.field}[0][]" class="form-control">
+    <button type="button" onclick="deleteHighlight(this)">Delete</button>
+  `;
   highlightsList.appendChild(newHighlight);
+}
+
+function deleteHighlight(button) {
+  const highlightItem = button.parentElement;
+  highlightItem.remove();
+
+  // If there are other highlights, add the delete button to the last one
+  const highlightsList = document.querySelector(".highlights-list");
+  const lastHighlight = highlightsList.querySelector("li:last-child");
+  if (lastHighlight && !lastHighlight.querySelector("button")) {
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.onclick = () => deleteHighlight(deleteButton);
+    deleteButton.textContent = "Delete";
+    lastHighlight.appendChild(deleteButton);
+  }
 }
 let htmlContent = "";
 function submitJson() {
@@ -367,8 +429,6 @@ function submitJson() {
     .then((response) => response.json())
     .then((data) => {
       htmlContent = data.html; // Save the HTML content
-      const previewDiv = document.getElementById("html-preview");
-      previewDiv.innerHTML = htmlContent;
       console.log("HTML Preview Updated");
     })
     .catch((error) => {
